@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="days.css">
+	<meta charset="UTF-8">
+	<title>Web 2</title>
+
+
+</head>
+<style>
+#blok{display:none;}
+#message{font-size:32px;}
+#delet{background:red;
+border-color:black;}
+
+
+</style>
+<body bgcolor="#aff">
+	<header>
+
+	<div align="center" >
+		<a href="site.html"><p id="p" ><strong><em>TestWeb2</em></strong><a>
+<input type="submit"  value="" onclick="show()"> <input id="delet" type="submit"  value="" onclick="delet()"></p> </p>
+	</div>
+	
+<div id='blok' align="left">
+	<input type="text" id='put' value="Что нового ?" >
+	<input type='submit' value="Cохранить"  onclick="myFunction()" class="zer" >
+	<input type='submit' value='Удалить добавленый текст'  onclick="reseting()">
+	
+</div>
+  <br>
+  <p id='save'>
+  </p>
+  
+   <i id="message"></i>
+</header>
+</body>
+	<script >
+
+
+
+
+	
+var arr = [];
+var i = 0;
+var k = 0;
+var test;
+var visible = true ;
+var text;
+var save;
+window.onload = function(){
+	if (localStorage.getItem('save6') !== null){
+document.getElementById("save").innerHTML = localStorage.getItem('save6');}
+if (localStorage.getItem('text6') !== null){
+document.getElementById("save").innerHTML = document.getElementById("save").innerHTML + localStorage.getItem('text6') ;}
+
+}
+
+
+function delet(){
+var delet = prompt('Введите ключевое слово:','');
+if (delet == 'dania') {var is = confirm('Удалить весь текст и данные?');
+if (is) {localStorage.removeItem('save6'); localStorage.removeItem('text6'); document.getElementById("save").innerHTML='';document.getElementById("text").innerHTML='';};
+
+
+ }
+}
+
+
+
+
+
+function myFunction(){
+
+	var x = document.getElementById('put').value;
+
+	if (x.length==0) {} else {
+	arr[i] = x.length;
+	k = k + x.length;
+	document.getElementById("message").innerHTML = document.getElementById("message").innerHTML + x;
+	document.getElementById('put').value='';
+	
+	 arr[i] ;
+	
+i++;
+
+} ;
+};
+
+function reseting(){
+	if (k==0) {} else {
+	if (k<=arr[i]) {k = 0 } else
+	{k = k - arr[i-1]};
+	document.getElementById("message").innerHTML = document.getElementById("message").innerHTML.substr(0,k);
+	
+
+	
+
+ 
+	i--;
+  
+
+
+} ;}
+
+function show(){
+if(visible) {
+
+        document.getElementById('blok' ).style.display = 'none';
+
+        visible = false;
+
+    } else {
+
+        document.getElementById('blok' ).style.display = 'block';
+
+        visible = true;
+    }
+window.onbeforeunload = function(){
+	save = document.getElementById("save").innerHTML;
+	text = document.getElementById("message").innerHTML;
+
+localStorage.setItem('text6',text);
+localStorage.setItem('save6',save);
+
+
+}
+
+
+
+
+
+
+
+}
+
+	</script>
+</html>
+
